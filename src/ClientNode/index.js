@@ -14,6 +14,7 @@ class ClientNode extends ClientBase {
     super('node', {
       appDir: path.resolve(process.cwd(), '__tglib__'),
       binaryPath: path.resolve(process.cwd(), 'libtdjson'),
+      logFilePath: path.resolve(appDir, 'logs.txt'),
       ...options,
     })
     // register inquirer getInput function as default
@@ -26,6 +27,7 @@ class ClientNode extends ClientBase {
         appDir,
         binaryPath,
         verbosityLevel,
+        logFilePath,
       } = this.options
 
       await fs.ensureDir(appDir)
@@ -44,7 +46,7 @@ class ClientNode extends ClientBase {
         'td_set_log_verbosity_level'     : ['void'   , ['int']],
         'td_set_log_fatal_error_callback': ['void'   , ['pointer']],
       })
-      this.tdlib.td_set_log_file_path(path.resolve(appDir, 'logs.txt'))
+      this.tdlib.td_set_log_file_path(logFilePath)
       this.tdlib.td_set_log_verbosity_level(verbosityLevel)
       this.tdlib.td_set_log_fatal_error_callback(ffi.Callback('void', ['string'], (message) => {
         console.error('TDLib Fatal Error:', message)
