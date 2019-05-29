@@ -1,6 +1,6 @@
 {
-  "name": "tglib",
-  "version": "3.0.2",
+  "name": "tglib-withlogfilepath",
+  "version": "3.0.3",
   "author": "nodegin",
   "license": "MIT",
   "description": "TDLib (Telegram Database library) bindings for Node.js",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nodegin/tglib.git"
+    "url": "git+https://github.com/ForkForgery/tglib.git"
   },
   "keywords": [
     "tdlib",

@@ -11,8 +11,9 @@ import {
 
 class ClientNode extends ClientBase {
   constructor(options = {}) {
+    const appDir = path.resolve(process.cwd(), '__tglib__');
     super('node', {
-      appDir: path.resolve(process.cwd(), '__tglib__'),
+      appDir,
       binaryPath: path.resolve(process.cwd(), 'libtdjson'),
       logFilePath: path.resolve(appDir, 'logs.txt'),
       ...options,
